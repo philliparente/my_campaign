@@ -1,3 +1,7 @@
-# my_campaign
+# My Campaign
 
-Um app para dividir a experiencia nas minhas sessões de rpg
+App for manage my rpg campaign.
+
+Features:
+
+* Manage experiencie points for characters 
