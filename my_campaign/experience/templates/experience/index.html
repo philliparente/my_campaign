@@ -10,6 +10,7 @@
     <div>
         <h2>{{ campaign.title }}</h2>
         <h3>{{ campaign.description }}</h3>
+        {{ campaign.id }}
         <a href="{% url 'experience:campaign' campaign.id %}">Leia mais</a>
     </div>
 {% endfor %}
