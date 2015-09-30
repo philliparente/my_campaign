@@ -1,6 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Campaign
 
 
 def index(request):
-    return render(request, 'experience/index.html')
+    campaigns = Campaign.objects.all()
+    return render(request, 'experience/index.html', {'campaigns': campaigns})
+
+
+def campaign(request, campaign_id):
+    campaigns = Campaign.objects.all()
+    return render(request, 'experience/index.html', {'campaigns': campaigns})
