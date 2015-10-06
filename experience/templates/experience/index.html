@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Minhas campanhas</h1>
+{% for campaign in campaigns %}
+    <div>
+        <h2>{{ campaign.title }}</h2>
+        <h3>{{ campaign.description }}</h3>
+        <a href="{% url 'experience:campaign' campaign.id %}">Leia mais</a>
+    </div>
+{% endfor %}
+</body>
+</html>
