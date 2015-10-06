@@ -9,4 +9,5 @@ def index(request):
 
 
 def campaign(request, campaign_id):
-	print campaign_id
+    campaigns = Campaign.objects.all()
+    return render(request, 'experience/index.html', {'campaigns': campaigns})
