@@ -1,4 +1,4 @@
-<!-- 
+<!--
 This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -11,7 +11,12 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 </head>
 <body>
 <h1>Minhas campanhas</h1>
-<p>Minha campanha é um app para gerenciamento de campanhas de rpg.</p>
-<p>O projeto é open source e aberto a colaboração, forque-o no <a href="https://github.com/Ladeia/my_campaign/" target="blank">github<a></p>
+{% for campaign in campaigns %}
+    <div>
+        <h2>{{ campaign.title }}</h2>
+        <h3>{{ campaign.description }}</h3>
+        <a href="{% url 'experience:campaign' campaign.id %}">Leia mais</a>
+    </div>
+{% endfor %}
 </body>
 </html>

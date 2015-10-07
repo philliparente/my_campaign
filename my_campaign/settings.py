@@ -1,3 +1,6 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 """
 Django settings for my_campaign project.
 
@@ -76,18 +79,19 @@ WSGI_APPLICATION = 'my_campaign.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'sqlite': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mycampaign',
-        'USER': 'mycampaign',
-        'PASSWORD': 'mycampaign',
-        'HOST': 'db.redegsti.dev',
-        'PORT': '5432',
     }
+    # ,
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'mycampaign',
+    #     'USER': 'mycampaign',
+    #     'PASSWORD': 'mycampaign',
+    #     'HOST': 'db.redegsti.dev',
+    #     'PORT': '5432',
+    # }
 }
 
 # Internationalization
