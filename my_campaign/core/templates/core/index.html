@@ -1,7 +1,7 @@
 <!-- 
 This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ License, v. 2.0. If a copy of the MPL was not distributed with this
+ file, You can obtain one at http://mozilla.org/MPL/2.0/. 
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
         <h2>{{ campaign.title }}</h2>
         <h3>{{ campaign.description }}</h3>
         {{ campaign.id }}
-        <a href="{% url 'experience:campaign' campaign.id %}">Leia mais</a>
+        <a href="{% url 'core:campaign' campaign.id %}">Leia mais</a>
     </div>
 {% endfor %}
 </body>

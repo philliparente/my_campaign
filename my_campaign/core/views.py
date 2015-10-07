@@ -8,7 +8,7 @@ from .models import Campaign
 
 def index(request):
     campaigns = Campaign.objects.all()
-    return render(request, 'experience/index.html', {'campaigns': campaigns})
+    return render(request, 'core/index.html', {'campaigns': campaigns})
 
 
 def campaign(request, campaign_id):
