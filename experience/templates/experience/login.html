@@ -1,0 +1,32 @@
+<!--
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Minhas campanhas || Login</h1>
+<form action="{% url 'experience:login' %}" method="post">
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="{% trans "Username" %}" maxlength="100">
+    <br/>
+
+    <input type="password" name="password" placeholder="{% trans "Password" %}" maxlength="50">
+    <br/>
+
+    <input type="submit" value="{% trans "Login" %}" name="submit" />
+
+    <br/>
+
+</form>
+
+</body>
+</html>

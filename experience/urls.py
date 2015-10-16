@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^campaigns$', views.campaigns, name='campaigns'),
     url(r'^campaign/(?P<campaign_id>[0-9]+)/$', views.campaign, name='campaign'),
     url(r'^contributors', views.contributors, name='contributors'),
+    url(r'^login', views.login, name='login'),
 ]

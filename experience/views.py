@@ -1,6 +1,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+from django.contrib.auth import authenticate, login as auth_login, logout
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -22,3 +23,11 @@ def campaign(request, campaign_id):
 
 def contributors(request):
     return render(request, 'experience/contributors.html')
+
+def login(request):
+
+	if request.POST:
+		user  = request.POST
+		authenticate(username=user['username'], password=user['password'])
+		return render(request, 'experience/mypage.html', {'user':user})
+	return render(request, 'experience/login.html')
