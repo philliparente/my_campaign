@@ -51,6 +51,7 @@ and others
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so
@@ -79,6 +80,8 @@ var/
 *.manifest
 *.spec
 
+# ide
+.idea/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
