@@ -3,11 +3,13 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Campaign(models.Model):
     title = models.CharField(max_length=200, blank=False)
     description = models.TextField()
+    author = models.ForeignKey(User, blank=False, related_name='master')
 
     def __str__(self):
         return self.title

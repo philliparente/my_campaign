@@ -3,20 +3,17 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 -->
+
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>My campaign | Contributors</title>
 </head>
 <body>
-<h1>Minhas campanhas</h1>
-{% for campaign in campaigns %}
-    <div>
-        <h2>{{ campaign.title }}</h2>
-        <h3>{{ campaign.description }}</h3>
-        <a href="{% url 'experience:show_campaign' campaign.id %}">Leia mais</a>
-    </div>
-{% endfor %}
+<h1>Contributors</h1>
+<p><a href="https://github.com/Ladeia" target="_blank">Antonio Ladeia</a></p>
+<p><a href="http://www.facebook.com/outradimensaol" target="_blank">Manoelcs</a></p>
 </body>
 </html>
