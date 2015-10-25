@@ -13,6 +13,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 </head>
 <body>
 <h1>Minhas campanhas || Login</h1>
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
 <form action="{% url 'experience:login' %}" method="post">
     {% csrf_token %}
 

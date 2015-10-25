@@ -13,7 +13,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 </head>
 <body>
 <h1>Minhas campanhas || Register</h1>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
 <form action="{% url 'experience:signup' %}" method="post">
 {% csrf_token %}
     <input type="text" name="username" id="username" placeholder="username" />
