@@ -22,10 +22,8 @@ def index(request):
 
 @login_required
 def campaigns(request):
-    if request.POST and request.POST['username']:
-
-        user = User.objects.filter(username=request.POST['username'])
-        campaigns = Campaign.objects.filter(author=user)
+    if request.user.is_authenticated():
+        campaigns = Campaign.objects.filter(author=request.user)
 
         return render(request, 'experience/campaigns.html', {'campaigns': campaigns})
 
@@ -45,6 +43,8 @@ def contributors(request):
 def auth_login(request):
     message = ''
 
+    url_next = '' if 'next' not in request.GET else request.GET.get('next')
+
     if request.user.is_authenticated():
         return render(request, 'experience/mypage.html', {})
 
@@ -56,6 +56,10 @@ def auth_login(request):
             if user.is_active:
                 login(request, user)
                 message = "User is valid, active and authenticated"
+
+                if 'url_next' in request.POST and request.POST.get('url_next'):
+                    return redirect(request.POST.get('url_next'))
+
                 return render(request, 'experience/mypage.html', {'message': message})
             else:
                 message = "The password is valid, but the account has been disabled!"
@@ -63,7 +67,10 @@ def auth_login(request):
             # the authentication system was unable to verify the username and password
             message = "The username and password were incorrect."
 
-    return render(request, 'experience/login.html', {'message': message})
+    return render(request, 'experience/login.html', {
+        'message': message,
+        'url_next': url_next if 'next' not in request.GET else request.GET.get('next')
+    })
 
 
 def signup(request):

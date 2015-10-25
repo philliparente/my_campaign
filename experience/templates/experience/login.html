@@ -23,6 +23,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     <input type="password" name="password" placeholder="{% trans "Password" %}" maxlength="50">
     <br/>
 
+    <input type="hidden" value="{{ url_next }}" name="url_next" />
     <input type="submit" value="{% trans "Login" %}" name="submit" />
 
     <br/>
