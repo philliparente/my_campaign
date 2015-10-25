@@ -1,5 +1,6 @@
 # My Campaign
 App for manage my rpg campaign.
+
 [![Build Status](https://travis-ci.org/Ladeia/my_campaign.svg?branch=master)](https://travis-ci.org/Ladeia/my_campaign)
 
 # Features:
