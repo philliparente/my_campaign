@@ -84,14 +84,14 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
     # ,
-    #'default': {
+    # 'default': {
     #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #    'NAME': 'mycampaign',
     #    'USER': 'mycampaign',
     #    'PASSWORD': 'mycampaign',
     #    'HOST': 'localhost',
     #    'PORT': '5432',
-    #}
+    # }
 }
 
 # Internationalization
@@ -112,3 +112,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/login'
