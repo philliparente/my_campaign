@@ -15,20 +15,52 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import ConfigParser
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CONFIG_PATH = os.path.join(BASE_DIR, 'my_campaign/project-config.cfg')
 
+
+# Config instance object
+config = ConfigParser.RawConfigParser()
+
+try:
+    config.readfp(open(CONFIG_PATH))
+except IOError, e:
+
+    config.add_section("GENERAL")
+    config.set("GENERAL", "secret_key", 'okq5rdq5wcoduw=3#bzq)&9e74(*cmlo@&+&1xfaw)bu3-v2(0')
+
+    config.add_section("DATABASE")
+    config.set("DATABASE", "engine", 'django.db.backends.sqlite3')
+    config.set("DATABASE", "name", os.path.join(BASE_DIR, 'db.sqlite3'))
+    config.set("DATABASE", "user", "")
+    config.set("DATABASE", "password", "")
+    config.set("DATABASE", "host", "")
+    config.set("DATABASE", "port", "")
+
+    config.add_section("LOCALE")
+    config.set("LOCALE", "code", 'pt-br')
+    config.set("LOCALE", "timezone", 'America/Bahia')
+    config.set("LOCALE", "i18n", 'true')
+    config.set("LOCALE", "l10n", 'true')
+    config.set("LOCALE", "tz", 'true')
+
+
+    with open(CONFIG_PATH, 'wb') as configfile:
+        config.write(configfile)
+        configfile.close()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'okq5rdq5wcoduw=3#bzq)&9e74(*cmlo@&+&1xfaw)bu3-v2(0'
+SECRET_KEY = config.get("GENERAL", "secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,32 +112,34 @@ WSGI_APPLICATION = 'my_campaign.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': config.get("DATABASE", "engine"),
+        'NAME': config.get("DATABASE", "name"),
     }
-    # ,
-    # 'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'mycampaign',
-    #    'USER': 'mycampaign',
-    #    'PASSWORD': 'mycampaign',
-    #    'HOST': 'localhost',
-    #    'PORT': '5432',
-    # }
 }
+
+
+if config.get("DATABASE", "user"):
+    DATABASES['default']['USER'] = config.get("DATABASE", "user")
+
+if config.get("DATABASE", "password"):
+    DATABASES['default']['PASSWORD'] = config.get("DATABASE", "password")
+
+if config.get("DATABASE", "host"):
+    DATABASES['default']['HOST'] = config.get("DATABASE", "host")
+
+if config.get("DATABASE", "port"):
+    DATABASES['default']['PORT'] = config.get("DATABASE", "port")
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+LANGUAGE_CODE = config.get("LOCALE", "code")
+TIME_ZONE = config.get("LOCALE", "timezone")
+USE_I18N = config.getboolean("LOCALE", "i18n")
+USE_L10N = config.getboolean("LOCALE", "l10n")
+USE_TZ = config.getboolean("LOCALE", "tz")
 
 
 # Static files (CSS, JavaScript, Images)

@@ -56,6 +56,9 @@ __pycache__/
 # C extensions
 *.so
 
+### Local App Cofig
+project-config.cfg
+
 # Distribution / packaging
 .Python
 env/
